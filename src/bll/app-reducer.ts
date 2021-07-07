@@ -3,7 +3,7 @@ export type AppStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
 const initialState = {
     status: "idle" as AppStatusType,
-    error: null as string | null,
+    error: null as string | null
 }
 export type InitialStateType = typeof initialState
 

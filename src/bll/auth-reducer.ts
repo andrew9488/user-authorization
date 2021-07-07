@@ -1,5 +1,6 @@
 import {authMe, login} from "../api/api";
 import {setAppStatusAC} from "./app-reducer";
+import {setUserDataAC} from "./profile-reducer";
 
 export type AuthReducerActionsType = ReturnType<typeof setAccessTokenAC> | ReturnType<typeof setIsLoggedInAC>
 
@@ -55,6 +56,7 @@ const authMeTC = (token: string) => (dispatch: any) => {
             const {name, email} = response.data
             dispatch(setAppStatusAC("succeeded"))
             dispatch(setIsLoggedInAC(true))
+            dispatch(setUserDataAC(name, email))
         })
         .catch(error => {
             dispatch(setAppStatusAC("failed"))
