@@ -34,7 +34,7 @@ export const setAccessTokenAC = (token: string) =>
 export const setIsLoggedInAC = (isLoggedIn: boolean) =>
     ({type: "AUTH-REDUCER/SET-IS-LOGGED-IN", isLoggedIn: isLoggedIn} as const)
 
-const loginTC = (id: number, email: string, password: string): AppThunkType => dispatch => {
+export const loginTC = (id: number, email: string, password: string): AppThunkType => dispatch => {
     dispatch(setAppStatusAC("loading"))
     login(id, email, password)
         .then(response => {
