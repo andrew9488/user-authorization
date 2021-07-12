@@ -1,30 +1,26 @@
 export const url = "https://tager.dev.ozitag.com/"
 
 type LoginResponseType = {
-    data: {
-        tokenType: string
-        expiresAt: string
-        accessToken: string
-        refreshToken: string
-        scopes: Array<any>
-    }
+    tokenType: string
+    expiresAt: string
+    accessToken: string
+    refreshToken: string
+    scopes: Array<any>
 }
 
 type AuthResponseType = {
-    data: {
-        name: string
-        email: string
-    }
+    name: string
+    email: string
 }
 
-export function login(id: number, email: string, login: string) {
+export function login(id: number, email: string, password: string) {
     return fetch(url + "api/auth/user", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
         },
-        body: JSON.stringify({id, email, login})
+        body: JSON.stringify({clientId: id, email, password})
     })
         .then(response => {
             if (!response.ok) {
@@ -37,7 +33,7 @@ export function login(id: number, email: string, login: string) {
         })
 }
 
-export function authMe(token: string) {
+export function authMe(token: string | null) {
     return fetch(url + "api/tager/user/profile", {
         method: "GET",
         headers: {

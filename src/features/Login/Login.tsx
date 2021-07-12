@@ -7,6 +7,7 @@ import {Redirect} from 'react-router-dom';
 import {useStyles} from "./materialUIstyles";
 import {AppRootStateType} from "../../bll/store";
 import {loginTC} from "../../bll/auth-reducer";
+import {PATH} from "../../components/Routes/Routes";
 
 function Copyright() {
     return (
@@ -18,7 +19,7 @@ function Copyright() {
             {new Date().getFullYear()}
             {'.'}
         </Typography>
-    );
+    )
 }
 
 type FormikErrorType = {
@@ -33,12 +34,13 @@ export const Login: React.FC = () => {
 
     const formik = useFormik({
         initialValues: {
-            email: '',
-            password: '',
+            email: 'user@ozitag.com',
+            password: 'user',
         },
         onSubmit: values => {
             const {email, password} = values
-            const id = new Date().getTime()
+            const id = 1
+            // const id = new Date().getTime()
             dispatch(loginTC(id, email, password))
             formik.resetForm()
         },
@@ -59,7 +61,7 @@ export const Login: React.FC = () => {
     })
 
     if (isLoggedIn) {
-        return <Redirect to={'/'}/>
+        return <Redirect to={PATH.PROFILE}/>
     }
     return (
         <Container component="main" maxWidth="xs">
@@ -79,7 +81,7 @@ export const Login: React.FC = () => {
                         fullWidth
                         id="email"
                         label="Email Address"
-                        autoComplete="email"
+                        autoComplete="off"
                         autoFocus
                         {...formik.getFieldProps('email')}
                     />
@@ -93,7 +95,7 @@ export const Login: React.FC = () => {
                         label="Password"
                         type="password"
                         id="password"
-                        autoComplete="current-password"
+                        autoComplete="off"
                         {...formik.getFieldProps('password')}
                     />
                     {formik.touched.password && formik.errors.password ?
