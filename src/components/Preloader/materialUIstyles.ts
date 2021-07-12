@@ -1,5 +1,5 @@
-import { Theme } from "@material-ui/core/styles";
-import { createStyles } from "@material-ui/core/styles";
+import {Theme} from "@material-ui/core/styles";
+import {createStyles} from "@material-ui/core/styles";
 import {makeStyles} from "@material-ui/core/styles";
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -8,7 +8,8 @@ export const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             '& > * + *': {
                 marginLeft: theme.spacing(2)
-            }
+            },
+            margin: "auto auto",
         }
     })
 )

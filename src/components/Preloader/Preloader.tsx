@@ -8,7 +8,7 @@ export const Preloader: React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <CircularProgress/>
+            <CircularProgress style={{width: "100px", height: "100px"}}/>
         </div>
     )
 }
