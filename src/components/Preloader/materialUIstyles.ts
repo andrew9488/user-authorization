@@ -7,9 +7,10 @@ export const useStyles = makeStyles((theme: Theme) =>
         root: {
             display: 'flex',
             '& > * + *': {
-                marginLeft: theme.spacing(2)
+                marginLeft: theme.spacing(5)
             },
-            margin: "auto auto",
+            justifyContent: "center",
+            marginTop: 20
         }
     })
 )

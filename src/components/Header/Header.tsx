@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../bll/store";
 import {logoutTC} from "../../bll/auth-reducer";
 
-export const Header: React.FC = () => {
+export const Header: React.FC = React.memo(() => {
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
     const dispatch = useDispatch()
@@ -23,11 +23,11 @@ export const Header: React.FC = () => {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        OZiTAG
+                        User Authorization
                     </Typography>
-                    <Button color="inherit" onClick={() => logout()}>{isLoggedIn ? "logout" : ""}</Button>
+                    <Button color="inherit" onClick={logout}>{isLoggedIn ? "logout" : ""}</Button>
                 </Toolbar>
             </AppBar>
         </div>
     )
-}
+})

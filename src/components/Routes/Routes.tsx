@@ -11,7 +11,7 @@ export const PATH = {
 }
 
 
-export const Routes: React.FC = () => {
+export const Routes: React.FC = React.memo(() => {
     return (
         <Switch>
             <Route exact path={PATH.PROFILE} render={() => <Profile/>}/>
@@ -20,4 +20,4 @@ export const Routes: React.FC = () => {
             <Redirect from={"*"} to={PATH.ERROR}/>
         </Switch>
     )
-}
+})
