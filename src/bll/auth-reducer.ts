@@ -1,8 +1,12 @@
-import {authMe, login} from "../api/api";
+import {authMe, login, logout} from "../api/api";
 import {setAppStatusAC, showAppErrorAC} from "./app-reducer";
 import {setUserDataAC} from "./profile-reducer";
 import {AppRootStateType, AppThunkType} from "./store";
-import {getTokenFromLocalStorageTC, setTokenToLocalStorageTC} from "../utils/localStorageHelpers";
+import {
+    getTokenFromLocalStorageTC,
+    removeTokenFromLocalStorageTC,
+    setTokenToLocalStorageTC
+} from "../utils/localStorageHelpers";
 
 export type AuthReducerActionsType = ReturnType<typeof setAccessTokenAC> | ReturnType<typeof setIsLoggedInAC>
 
@@ -35,9 +39,9 @@ export const setAccessTokenAC = (token: string) =>
 export const setIsLoggedInAC = (isLoggedIn: boolean) =>
     ({type: "AUTH-REDUCER/SET-IS-LOGGED-IN", isLoggedIn: isLoggedIn} as const)
 
-export const loginTC = (id: number, email: string, password: string): AppThunkType => dispatch => {
+export const loginTC = (email: string, password: string): AppThunkType => dispatch => {
     dispatch(setAppStatusAC("loading"))
-    login(id, email, password)
+    login(email, password)
         .then(response => {
             dispatch(setAppStatusAC("succeeded"))
             dispatch(setIsLoggedInAC(true))
@@ -46,6 +50,20 @@ export const loginTC = (id: number, email: string, password: string): AppThunkTy
         })
         .catch(error => {
             dispatch(setIsLoggedInAC(false))
+            dispatch(setAppStatusAC("failed"))
+            dispatch(showAppErrorAC(error))
+        })
+}
+
+export const logoutTC = (): AppThunkType => dispatch => {
+    dispatch(setAppStatusAC("loading"))
+    logout()
+        .then(() => {
+            dispatch(setAppStatusAC("succeeded"))
+            dispatch(setIsLoggedInAC(false))
+            dispatch(removeTokenFromLocalStorageTC())
+        })
+        .catch(error => {
             dispatch(setAppStatusAC("failed"))
             dispatch(showAppErrorAC(error))
         })

@@ -13,3 +13,7 @@ export const getTokenFromLocalStorageTC = () => (dispatch: Dispatch) => {
     }
 }
 
+export const removeTokenFromLocalStorageTC = () => (dispatch: Dispatch) => {
+    localStorage.removeItem("access_token")
+}
+

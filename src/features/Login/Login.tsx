@@ -9,18 +9,6 @@ import {AppRootStateType} from "../../bll/store";
 import {loginTC} from "../../bll/auth-reducer";
 import {PATH} from "../../components/Routes/Routes";
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://github.com/andrew9488">
-                Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    )
-}
 
 type FormikErrorType = {
     email?: string
@@ -39,9 +27,7 @@ export const Login: React.FC = () => {
         },
         onSubmit: values => {
             const {email, password} = values
-            const id = 1
-            // const id = new Date().getTime()
-            dispatch(loginTC(id, email, password))
+            dispatch(loginTC(email, password))
             formik.resetForm()
         },
         validate: (values => {
@@ -115,5 +101,18 @@ export const Login: React.FC = () => {
                 <Copyright/>
             </Box>
         </Container>
+    )
+}
+
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://github.com/andrew9488">
+                Website
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
     )
 }

@@ -13,14 +13,14 @@ type AuthResponseType = {
     email: string
 }
 
-export function login(id: number, email: string, password: string) {
+export function login( email: string, password: string) {
     return fetch(url + "api/auth/user", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
         },
-        body: JSON.stringify({clientId: id, email, password})
+        body: JSON.stringify({clientId: 1, email, password})
     })
         .then(response => {
             if (!response.ok) {
@@ -30,6 +30,26 @@ export function login(id: number, email: string, password: string) {
         })
         .then(data => {
             return data.data as LoginResponseType
+        })
+}
+
+export function logout() {
+    return fetch(url + "user/profile/logout", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({})
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText)
+            }
+            return response.json()
+        })
+        .then(data => {
+            return data.data
         })
 }
 
