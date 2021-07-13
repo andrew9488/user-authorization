@@ -20,7 +20,6 @@ export const Profile: React.FC = React.memo(() => {
         return <Redirect to={PATH.LOGIN}/>
     }
 
-
     return (
         <Card className={styles.root}>
             <CardMedia

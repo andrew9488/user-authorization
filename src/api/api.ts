@@ -13,7 +13,7 @@ type AuthResponseType = {
     email: string
 }
 
-export function login( email: string, password: string) {
+export function login(email: string, password: string) {
     return fetch(url + "api/auth/user", {
         method: "POST",
         headers: {
@@ -34,11 +34,11 @@ export function login( email: string, password: string) {
 }
 
 export function logout() {
-    return fetch(url + "user/profile/logout", {
+    return fetch("https://secret-ocean-49799.herokuapp.com/" + url + "user/profile/logout", { //for cors
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Accept": "application/json",
         },
         body: JSON.stringify({})
     })
@@ -60,12 +60,13 @@ export function authMe(token: string | null) {
             "Accept": "application/json",
             "Authorization": `Bearer ${token}`
         },
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error(response.statusText)
-        }
-        return response.json()
     })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText)
+            }
+            return response.json()
+        })
         .then(data => {
             return data.data as AuthResponseType
         })

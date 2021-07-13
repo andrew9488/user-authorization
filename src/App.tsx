@@ -10,23 +10,18 @@ import {Preloader} from "./components/Preloader/Preloader";
 
 export const App: React.FC = React.memo(() => {
 
-    const status = useSelector<AppRootStateType, AppStatusType>(state => state.app.status)
-    const dispatch = useDispatch()
+        const status = useSelector<AppRootStateType, AppStatusType>(state => state.app.status)
+        const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(authMeTC())
-    }, [])
+        useEffect(() => {
+            dispatch(authMeTC())
+        }, [])
 
-    if (status === "loading") {
-        return <Preloader/>
-    }
-
-    return (
-        <div className={styles.app}>
-            <Header/>
-            <div>
-                <Routes/>
+        return (
+            <div className={styles.app}>
+                <Header/>
+                {status === "loading" ? <Preloader/> : <Routes/>}
             </div>
-        </div>
-    )
-})
+        )
+    }
+)

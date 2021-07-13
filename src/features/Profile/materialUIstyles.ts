@@ -3,8 +3,8 @@ import { makeStyles, createStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme) =>
     createStyles({
         root: {
-            minWidth: 240,
-            maxWidth: 318,
+            minWidth: 260,
+            maxWidth: 340,
             width: "100%",
             margin: "20px auto",
             display: "flex",
@@ -17,13 +17,12 @@ export const useStyles = makeStyles((theme) =>
         },
         title: {
             margin: "10px 3px 5px 3px",
-            fontSize: 20,
+            fontSize: 24,
             fontWeight: 700,
-            textAlign: "center"
         },
         media: {
-            height: 320,
-            width: "100%",
+            height: 306,
+            width: "90%",
             marginTop: 10,
         }
     })

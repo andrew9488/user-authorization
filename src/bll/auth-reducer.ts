@@ -34,11 +34,13 @@ export const authReducer = (state: InitialStateType = initialState, action: Auth
     }
 }
 
+//action creators
 export const setAccessTokenAC = (token: string) =>
     ({type: "AUTH-REDUCER/SET-ACCESS-TOKEN", token} as const)
 export const setIsLoggedInAC = (isLoggedIn: boolean) =>
     ({type: "AUTH-REDUCER/SET-IS-LOGGED-IN", isLoggedIn: isLoggedIn} as const)
 
+//thunk creators
 export const loginTC = (email: string, password: string): AppThunkType => dispatch => {
     dispatch(setAppStatusAC("loading"))
     login(email, password)
@@ -65,6 +67,8 @@ export const logoutTC = (): AppThunkType => dispatch => {
         })
         .catch(error => {
             dispatch(setAppStatusAC("failed"))
+            dispatch(setIsLoggedInAC(false))
+            dispatch(removeTokenFromLocalStorageTC())
             dispatch(showAppErrorAC(error))
         })
 }

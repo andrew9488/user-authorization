@@ -25,7 +25,7 @@ export const Header: React.FC = React.memo(() => {
                     <Typography variant="h6" className={classes.title}>
                         User Authorization
                     </Typography>
-                    <Button color="inherit" onClick={logout}>{isLoggedIn ? "logout" : ""}</Button>
+                    <Button color="inherit" onClick={logout}>{isLoggedIn ? "Sign out" : ""}</Button>
                 </Toolbar>
             </AppBar>
         </div>
