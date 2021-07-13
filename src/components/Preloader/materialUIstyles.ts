@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme: Theme) =>
                 marginLeft: theme.spacing(5)
             },
             justifyContent: "center",
-            marginTop: 20
+            marginTop: 50
         }
     })
 )

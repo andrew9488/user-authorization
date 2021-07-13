@@ -49,6 +49,7 @@ export const loginTC = (email: string, password: string): AppThunkType => dispat
             dispatch(setIsLoggedInAC(true))
             const {accessToken} = response
             dispatch(setTokenToLocalStorageTC(accessToken))
+            dispatch(authMeTC())
         })
         .catch(error => {
             dispatch(setIsLoggedInAC(false))

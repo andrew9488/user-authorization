@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import styles from './App.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import {authMeTC} from "./bll/auth-reducer";
-import {Header} from "./components/Header/Header";
-import {Routes} from './components/Routes/Routes';
-import {AppRootStateType} from "./bll/store";
-import {AppStatusType} from "./bll/app-reducer";
-import {Preloader} from "./components/Preloader/Preloader";
+import {authMeTC} from "../bll/auth-reducer";
+import {Header} from "../components/Header/Header";
+import {Routes} from '../components/Routes/Routes';
+import {AppRootStateType} from "../bll/store";
+import {AppStatusType} from "../bll/app-reducer";
+import {Preloader} from "../components/Preloader/Preloader";
 
 export const App: React.FC = React.memo(() => {
 

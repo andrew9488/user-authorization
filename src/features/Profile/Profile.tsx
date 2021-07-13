@@ -27,10 +27,10 @@ export const Profile: React.FC = React.memo(() => {
                 image={icon}
             />
             <Typography variant="h5" component="h1" className={styles.title}>
-                name: {name}
+                Name: {name}
             </Typography>
             <Typography variant="h5" component="h1" className={styles.title}>
-                email: {email}
+                Email: {email}
             </Typography>
         </Card>
     )
