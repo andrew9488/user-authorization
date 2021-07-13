@@ -46,7 +46,8 @@ export function logout() {
             if (!response.ok) {
                 throw new Error(response.statusText)
             }
-            return response.json()
+            let res = JSON.stringify(response)
+            return JSON.parse(res)
         })
         .then(data => {
             return data.data

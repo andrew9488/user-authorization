@@ -68,8 +68,6 @@ export const logoutTC = (): AppThunkType => dispatch => {
         })
         .catch(error => {
             dispatch(setAppStatusAC("failed"))
-            dispatch(setIsLoggedInAC(false))
-            dispatch(removeTokenFromLocalStorageTC())
             dispatch(showAppErrorAC(error))
         })
 }
