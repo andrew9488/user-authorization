@@ -6,21 +6,17 @@ import {AppRootStateType} from "../../bll/store";
 import {showAppErrorAC} from "../../bll/app-reducer";
 
 
-function Alert(props: AlertProps) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
-export const ErrorSnackbar = () => {
+export const ErrorSnackbar: React.FC = React.memo(() => {
 
     const error = useSelector<AppRootStateType, null | string>(state => state.app.error)
     const dispatch = useDispatch()
 
     const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
         if (reason === 'clickaway') {
-            return;
+            return
         }
         dispatch(showAppErrorAC(null))
-    };
+    }
 
     const isOpen = error !== null
 
@@ -30,5 +26,9 @@ export const ErrorSnackbar = () => {
                 {error}
             </Alert>
         </Snackbar>
-    );
+    )
+})
+
+function Alert(props: AlertProps) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
 }

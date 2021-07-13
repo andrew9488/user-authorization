@@ -2,7 +2,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import React from "react";
 import {useStyles} from "./materialUIstyles";
 
-export const Preloader: React.FC = () => {
+export const Preloader: React.FC = React.memo(() => {
 
     const classes = useStyles()
 
@@ -11,4 +11,4 @@ export const Preloader: React.FC = () => {
             <CircularProgress style={{width: "100px", height: "100px"}}/>
         </div>
     )
-}
+})
