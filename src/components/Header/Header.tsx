@@ -7,6 +7,7 @@ import {useStyles} from "./materialUIstyles";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../bll/store";
 import {logoutTC} from "../../bll/auth-reducer";
+import {ErrorSnackbar} from "../ErrorSnackbar/ErrorSnackbar";
 
 export const Header: React.FC = React.memo(() => {
 
@@ -21,6 +22,7 @@ export const Header: React.FC = React.memo(() => {
     return (
         <div className={classes.root}>
             <AppBar position="static">
+                <ErrorSnackbar/>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         User Authorization
