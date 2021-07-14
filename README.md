@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Тестовое задание OZiTAG
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Посмотреть реализацию](https://andrew9488.github.io/user-authorization)
 
-## Available Scripts
+## Технологии: 
 
-In the project directory, you can run:
+Typescript, React.js
 
-### `yarn start`
+## Описание: 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Реализовать приложение из двух экранов:
+1. Экран авторизации, содержит форму с полями email и password и кнопку Submit.
+2. Экран авторизованного юзера, содержит отображение профиля юзера и кнопку Выйти.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Если пользователь авторизован – показывать экран 2, иначе – экран 1.
 
-### `yarn test`
+## 1. API для аутентификации:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+POST /api/auth/user HTTP/1.1
+Host: https://tager.dev.ozitag.com
+Accept: application/json
+Content-Type: application/json
 
-### `yarn build`
+Body:
+    {
+      "clientId": 1,
+      "email": "user@ozitag.com",
+      "password": "user"
+    }
+    
+Пример ответа:
+{
+  "data": {
+    "tokenType": "Bearer",
+    "expiresAt": "2021-08-27T12:25:36Z",
+    "accessToken": "eyJ0eXAiOiJKV19BbrwgbKi9eJH9IeXYTjWdXkwshh...rQgA",
+    "refreshToken": "def50200471ef4d2a5bc66ab0a833290bb426d495...280fb"
+  }
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 2. API для получения профиля авторизованного юзера:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+GET /api/tager/user/profile HTTP/1.1
+Host: https://tager.dev.ozitag.com
+Accept: application/json
+Authorization: Bearer {access_token}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Пример ответа: 
+{
+  "data": {
+      "name": "Test User",
+      "email": "user@ozitag.com"
+    }
+}
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Будет плюсом:
+1. использование Formik, Fetch API
+2. валидация формы
