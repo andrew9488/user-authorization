@@ -54,7 +54,7 @@ export const loginTC = (email: string, password: string): AppThunkType => dispat
         .catch(error => {
             dispatch(setIsLoggedInAC(false))
             dispatch(setAppStatusAC("failed"))
-            dispatch(showAppErrorAC(error))
+            dispatch(showAppErrorAC(error.message))
         })
 }
 
@@ -68,7 +68,7 @@ export const logoutTC = (): AppThunkType => dispatch => {
         })
         .catch(error => {
             dispatch(setAppStatusAC("failed"))
-            dispatch(showAppErrorAC(error))
+            dispatch(showAppErrorAC(error.message))
         })
 }
 
@@ -86,6 +86,6 @@ export const authMeTC = (): AppThunkType => (dispatch, getState: () => AppRootSt
         .catch(error => {
             dispatch(setAppStatusAC("failed"))
             dispatch(setIsLoggedInAC(false))
-            dispatch(showAppErrorAC(error))
+            dispatch(showAppErrorAC(error.message))
         })
 }

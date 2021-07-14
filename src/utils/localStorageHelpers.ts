@@ -2,7 +2,7 @@ import {Dispatch} from "redux";
 import {setAccessTokenAC} from "../bll/auth-reducer";
 
 export const setTokenToLocalStorageTC = (token: string) => (dispatch: Dispatch) => {
-    localStorage.setItem("access_token", JSON.stringify(token))
+    if (token) localStorage.setItem("access_token", JSON.stringify(token))
 }
 
 export const getTokenFromLocalStorageTC = () => (dispatch: Dispatch) => {

@@ -24,12 +24,20 @@ export function login(email: string, password: string) {
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error(response.statusText)
+                return response.text()
+                    .then(text => {
+                        throw new Error(text)
+                    })
+            } else {
+                return response.json()
             }
-            return response.json()
         })
         .then(data => {
             return data.data as LoginResponseType
+        })
+        .catch(error => {
+            let err = JSON.parse(error.message)
+            throw new Error(err.message)
         })
 }
 
@@ -44,13 +52,21 @@ export function logout() {
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error(response.statusText)
+                return response.text()
+                    .then(text => {
+                        throw new Error(text)
+                    })
+            } else {
+                let res = JSON.stringify(response)
+                return JSON.parse(res)
             }
-            let res = JSON.stringify(response)
-            return JSON.parse(res)
         })
         .then(data => {
             return data.data
+        })
+        .catch(error => {
+            let err = JSON.parse(error.message)
+            return err.message
         })
 }
 
@@ -64,12 +80,20 @@ export function authMe(token: string | null) {
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error(response.statusText)
+                return response.text()
+                    .then(text => {
+                        throw new Error(text)
+                    })
+            } else {
+                return response.json()
             }
-            return response.json()
         })
         .then(data => {
             return data.data as AuthResponseType
+        })
+        .catch(error => {
+            let err = JSON.parse(error.message)
+            return err.message
         })
 }
 
