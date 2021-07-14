@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/user-authorization/static/css/main.be524995.chunk.css",
+    "main.js": "/user-authorization/static/js/main.b14f5729.chunk.js",
+    "main.js.map": "/user-authorization/static/js/main.b14f5729.chunk.js.map",
+    "runtime-main.js": "/user-authorization/static/js/runtime-main.193c886f.js",
+    "runtime-main.js.map": "/user-authorization/static/js/runtime-main.193c886f.js.map",
+    "static/js/2.ed90d895.chunk.js": "/user-authorization/static/js/2.ed90d895.chunk.js",
+    "static/js/2.ed90d895.chunk.js.map": "/user-authorization/static/js/2.ed90d895.chunk.js.map",
+    "static/js/3.bad99eb3.chunk.js": "/user-authorization/static/js/3.bad99eb3.chunk.js",
+    "static/js/3.bad99eb3.chunk.js.map": "/user-authorization/static/js/3.bad99eb3.chunk.js.map",
+    "index.html": "/user-authorization/index.html",
+    "static/css/main.be524995.chunk.css.map": "/user-authorization/static/css/main.be524995.chunk.css.map",
+    "static/js/2.ed90d895.chunk.js.LICENSE.txt": "/user-authorization/static/js/2.ed90d895.chunk.js.LICENSE.txt",
+    "static/media/image.60803bf7.png": "/user-authorization/static/media/image.60803bf7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.193c886f.js",
+    "static/js/2.ed90d895.chunk.js",
+    "static/css/main.be524995.chunk.css",
+    "static/js/main.b14f5729.chunk.js"
+  ]
+}
